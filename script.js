@@ -26,11 +26,11 @@ let star;
 
 
 function preload() {
-  this.load.spritesheet("player", "/assets/prototype_character.png", { frameWidth: 32, frameHeight: 32 });
-  this.load.image("ground", "/assets/ground.png");
-  this.load.image("bg", "/assets/bigger_bg.png");
-  this.load.image("star", "/assets/smallstar.png");
-  this.load.image("obstacle", "/assets/obstacle.png");
+  this.load.spritesheet("player", "assets/prototype_character.png", { frameWidth: 32, frameHeight: 32 });
+  this.load.image("ground", "assets/ground.png");
+  this.load.image("bg", "assets/bigger_bg.png");
+  this.load.image("star", "assets/smallstar.png");
+  this.load.image("obstacle", "assets/obstacle.png");
 }
 
 function create() {
