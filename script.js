@@ -39,7 +39,7 @@ function preload() {
   this.load.spritesheet("door", "assets/world/door.png", { frameWidth: 160, frameHeight: 160 });
 
   // Load audio assets
-  this.load.audio("bg_music", "assets/sfx/Ancestry.m4a");
+  this.load.audio("bg_music", "assets/sfx/Ancestry.mp3");
   this.load.audio("coin_sound", "assets/sfx/coin.wav");
 }
 
