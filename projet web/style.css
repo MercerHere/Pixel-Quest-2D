@@ -1,0 +1,78 @@
+﻿:root {
+  --hud-bg: rgba(22, 30, 45, 0.7);
+  --hud-border: rgba(255, 255, 255, 0.25);
+  --hud-text: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background: #101722;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+canvas {
+  display: block;
+}
+
+#hud {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 20;
+  pointer-events: none;
+}
+
+#coinCounter {
+  min-width: 150px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--hud-border);
+  background: var(--hud-bg);
+  color: var(--hud-text);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+#winOverlay {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(9, 17, 26, 0.78);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 600ms ease, visibility 600ms ease;
+  z-index: 25;
+}
+
+#winOverlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.win-box {
+  width: min(88vw, 460px);
+  padding: 26px 30px;
+  border-radius: 18px;
+  text-align: center;
+  color: #f5fbff;
+  background: linear-gradient(140deg, #1f3f67, #2f7bb7);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+.win-box h1 {
+  margin: 0 0 10px;
+  font-size: clamp(28px, 5vw, 44px);
+}
+
+.win-box p {
+  margin: 0;
+  font-size: clamp(15px, 2.2vw, 19px);
+}
