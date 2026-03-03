@@ -1,13 +1,31 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>For the second time!</title>
-    <link rel="stylesheet" href="styles.css" />
-    <script src="https://cdn.jsdelivr.net/npm/phaser@v3.90.0/dist/phaser.js"></script>
-  </head>
-  <body>
-    <div id="game-container">
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stick Hero Game</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="conteneur">
+
+        <div id="score">0</div>
+        
+
+        <div id="Introduction">
+            appuyer sur la souris pour ajuster la longeur de votre chemin
+        </div>
+
+
+        <div id="parfait">DOUBLER LE SCORE</div>
+
+
+        <button id="rejouer">REPLAY</button>
+
+        <canvas id="jeu"></canvas>
     </div>
-    <script src="script.js"></script>
-  </body>
+
+    <script src="js/quest.js"></script>
+</body>
 </html>
