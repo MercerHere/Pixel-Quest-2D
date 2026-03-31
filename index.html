@@ -1,31 +1,35 @@
-<!DOCTYPE html>
-<html lang="fr">
+﻿<!DOCTYPE html>
+<html lang="ar">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stick Hero Game</title>
-
-    <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fox Dash Platformer</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="conteneur">
+  <div class="bg-glow bg-glow-a"></div>
+  <div class="bg-glow bg-glow-b"></div>
 
-        <div id="score">0</div>
-        
-
-        <div id="Introduction">
-            appuyer sur la souris pour ajuster la longeur de votre chemin
-        </div>
-
-
-        <div id="parfait">DOUBLER LE SCORE</div>
-
-
-        <button id="rejouer">REPLAY</button>
-
-        <canvas id="jeu"></canvas>
+  <header id="topBar" aria-label="Game HUD">
+    <div class="brand">
+      <span class="dot"></span>
+      <span>Fox Dash</span>
     </div>
 
-    <script src="js/quest.js"></script>
+    <div class="hint">Move: ← → / Jump: ↑</div>
+  </header>
+
+  <main class="stage">
+    <canvas id="gameCanvas"></canvas>
+  </main>
+
+  <div id="winOverlay" aria-live="polite">
+    <div class="win-box">
+      <h1>YOU WIN</h1>
+      <p>Nice run. All coins collected.</p>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
 </body>
 </html>
