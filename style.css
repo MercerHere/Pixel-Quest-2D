@@ -1,5 +1,4 @@
-
-        * {
+    * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -7,109 +6,427 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             padding: 20px;
+            overflow-x: hidden;
         }
 
-        h1 {
-            color: #fff;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: slideDown 0.6s ease;
         }
 
-        .game-container {
-            background: #fff;
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .title {
+            font-size: 48px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            color: #94a3b8;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .game-wrapper {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 212, 255, 0.1);
+            max-width: 900px;
+            width: 100%;
+            animation: fadeIn 0.8s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .game-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        .stats {
+            display: flex;
+            gap: 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-label {
+            color: #64748b;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .stat-value {
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .difficulty-indicator {
+            display: flex;
+            gap: 5px;
+            justify-content: center;
+            margin-top: 8px;
+        }
+
+        .difficulty-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #475569;
+            transition: all 0.3s ease;
+        }
+
+        .difficulty-dot.active {
+            background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
+
+        .game-area {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .canvas-container {
+            position: relative;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 2px solid rgba(0, 212, 255, 0.3);
             border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            overflow: hidden;
+            box-shadow: inset 0 0 20px rgba(0, 212, 255, 0.05);
         }
 
         #gameCanvas {
-            border: 3px solid #333;
-            border-radius: 10px;
-            background: #000;
             display: block;
+            cursor: none;
         }
 
-        .score-board {
+        .side-panel {
             display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-            font-size: 18px;
-            font-weight: bold;
-            color: #333;
+            flex-direction: column;
+            gap: 20px;
+            min-width: 200px;
+        }
+
+        .character-box {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(0, 153, 255, 0.1) 100%);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .character-label {
+            color: #64748b;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .character-emoji {
+            font-size: 48px;
+            display: block;
+            margin-bottom: 10px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .game-mode {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(0, 153, 255, 0.1) 100%);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .mode-label {
+            color: #64748b;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .mode-value {
+            color: #e2e8f0;
+            font-size: 14px;
+            font-weight: 600;
         }
 
         .controls {
-            margin-top: 20px;
             display: flex;
-            gap: 10px;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        button {
+            padding: 14px 24px;
+            font-size: 14px;
+            font-weight: 600;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid transparent;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+            color: #fff;
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(0, 212, 255, 0.4);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background: rgba(0, 212, 255, 0.1);
+            color: #00d4ff;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 212, 255, 0.2);
+            border-color: rgba(0, 212, 255, 0.5);
+        }
+
+        .btn-secondary:active {
+            background: rgba(0, 212, 255, 0.15);
+        }
+
+        .instructions {
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(15, 172, 188, 0.1) 0%, rgba(0, 153, 255, 0.05) 100%);
+            border-left: 4px solid #00d4ff;
+            border-radius: 8px;
+            color: #cbd5e1;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .instructions h3 {
+            color: #00d4ff;
+            margin-bottom: 10px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .instructions p {
+            margin-bottom: 8px;
+        }
+
+        .keyboard-hint {
+            display: inline-block;
+            background: rgba(0, 212, 255, 0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
+            color: #00d4ff;
+            font-family: 'Courier New', monospace;
+            margin: 0 4px;
+        }
+
+        .game-over-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .game-over-modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 20px;
+            padding: 50px 40px;
+            text-align: center;
+            max-width: 500px;
+            animation: slideUp 0.4s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-content h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .modal-content.lose h2 {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff0000 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .modal-stats {
+            margin: 30px 0;
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            background: rgba(0, 212, 255, 0.05);
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+
+        .modal-stat {
+            text-align: center;
+        }
+
+        .modal-stat-label {
+            color: #64748b;
+            font-size: 12px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .modal-stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #00d4ff;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 15px;
             justify-content: center;
             flex-wrap: wrap;
         }
 
-        button {
-            padding: 12px 25px;
-            font-size: 16px;
-            font-weight: bold;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+        @media (max-width: 1024px) {
+            .game-area {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .title {
+                font-size: 36px;
+            }
+
+            .game-wrapper {
+                padding: 25px;
+            }
         }
 
-        #colorBtn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
+        @media (max-width: 600px) {
+            .game-wrapper {
+                padding: 15px;
+            }
 
-        #colorBtn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
-        }
+            .title {
+                font-size: 28px;
+            }
 
-        #startBtn {
-            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-            color: white;
-        }
+            .stats {
+                gap: 15px;
+            }
 
-        #startBtn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(56, 239, 125, 0.4);
-        }
+            .stat-value {
+                font-size: 20px;
+            }
 
-        #resetBtn {
-            background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
-            color: white;
-        }
+            button {
+                padding: 12px 20px;
+                font-size: 13px;
+            }
 
-        #resetBtn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(244, 92, 67, 0.4);
-        }
+            #gameCanvas {
+                width: 100%;
+                height: auto;
+            }
 
-        .instructions {
-            margin-top: 20px;
-            color: #fff;
-            text-align: center;
-            font-size: 14px;
-        }
+            .modal-content {
+                padding: 30px 20px;
+                margin: 20px;
+            }
 
-        .snake-preview {
-            margin-top: 15px;
-            text-align: center;
-            font-size: 24px;
+            .modal-content h2 {
+                font-size: 36px;
+            }
         }
-
-        .snake-preview span {
-            background: #fff;
-            padding: 10px 20px;
-            border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-        }
-  
