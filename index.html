@@ -1,37 +1,89 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>document</title>
-    <link rel="stylesheet" href="style.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snake Arena - Premium Game</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>🐍 Jeu Snake Classique</h1>
-    
-    <div class="game-container">
-        <div class="score-board">
-            <span>Score: <span id="score">0</span></span>
-            <span>Meilleur: <span id="highScore">0</span></span>
+  <div class="header">
+    <h1 class="title">SNAKE ARENA</h1>
+    <p class="subtitle">Survive the obstacles and reach the target</p>
+  </div>
+
+  <div class="game-wrapper">
+    <div class="game-header">
+      <div class="stats">
+        <div class="stat-item">
+          <div class="stat-label">Score</div>
+          <div class="stat-value" id="score">0</div>
         </div>
-        
+        <div class="stat-item">
+          <div class="stat-label">Best</div>
+          <div class="stat-value" id="highScore">0</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">Level</div>
+          <div class="stat-value" id="level">1</div>
+        </div>
+      </div>
+      <div class="game-status" id="gameStatus">Ready to Start</div>
+    </div>
+
+    <div class="game-area">
+      <div class="canvas-container">
         <canvas id="gameCanvas" width="400" height="400"></canvas>
-        
-        <div class="snake-preview">
-            <span id="snakeFace">🐍</span>
+      </div>
+
+      <div class="side-panel">
+        <div class="character-box">
+          <div class="character-label">Character</div>
+          <span class="character-emoji" id="characterEmoji">🐍</span>
+          <button id="changeCharacterBtn" class="btn-secondary">Change Character</button>
         </div>
-        
+
         <div class="controls">
-            <button id="startBtn">▶️ Démarrer</button>
-            <button id="colorBtn">🎨 Changer Couleur</button>
-            <button id="resetBtn">🔄 Réinitialiser</button>
+          <button id="startBtn" class="btn-primary">START GAME</button>
+          <button id="pauseBtn" class="btn-secondary">PAUSE</button>
+          <button id="resetBtn" class="btn-secondary">RESET</button>
         </div>
+      </div>
     </div>
-    
+
     <div class="instructions">
-        <p>Utilisez les flèches ⬆️⬇️⬅️➡️ pour déplacer le serpent</p>
+      <h3>How to Play</h3>
+      <p>Use <span class="keyboard-hint">Arrow Keys</span> or <span class="keyboard-hint">WASD</span> to move your snake</p>
+      <p>Collect the red food to grow and earn points</p>
+      <p>Avoid the falling obstacles (yellow boxes) and don't run into yourself</p>
+      <p>Each level brings faster gameplay and more obstacles</p>
     </div>
-        <script src="façon.js"></script>
+  </div>
+
+  <div class="game-over-modal" id="gameOverModal">
+    <div class="modal-content" id="modalContent">
+      <h2 id="modalTitle">GAME OVER</h2>
+      <div class="modal-stats">
+        <div class="modal-stat">
+          <div class="modal-stat-label">Final Score</div>
+          <div class="modal-stat-value" id="finalScore">0</div>
+        </div>
+        <div class="modal-stat">
+          <div class="modal-stat-label">Best Score</div>
+          <div class="modal-stat-value" id="bestScore">0</div>
+        </div>
+        <div class="modal-stat">
+          <div class="modal-stat-label">Level Reached</div>
+          <div class="modal-stat-value" id="levelReached">1</div>
+        </div>
+      </div>
+      <div class="modal-buttons">
+        <button id="playAgainBtn" class="btn-primary">PLAY AGAIN</button>
+        <button id="closeModalBtn" class="btn-secondary">CLOSE</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="façon.js"></script>
 </body>
 </html>
