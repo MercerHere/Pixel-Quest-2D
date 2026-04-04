@@ -1,35 +1,37 @@
-﻿<!DOCTYPE html>
-<html lang="ar">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fox Dash Platformer</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>document</title>
+    <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
-  <div class="bg-glow bg-glow-a"></div>
-  <div class="bg-glow bg-glow-b"></div>
-
-  <header id="topBar" aria-label="Game HUD">
-    <div class="brand">
-      <span class="dot"></span>
-      <span>Fox Dash</span>
+    <h1>🐍 Jeu Snake Classique</h1>
+    
+    <div class="game-container">
+        <div class="score-board">
+            <span>Score: <span id="score">0</span></span>
+            <span>Meilleur: <span id="highScore">0</span></span>
+        </div>
+        
+        <canvas id="gameCanvas" width="400" height="400"></canvas>
+        
+        <div class="snake-preview">
+            <span id="snakeFace">🐍</span>
+        </div>
+        
+        <div class="controls">
+            <button id="startBtn">▶️ Démarrer</button>
+            <button id="colorBtn">🎨 Changer Couleur</button>
+            <button id="resetBtn">🔄 Réinitialiser</button>
+        </div>
     </div>
-
-    <div class="hint">Move: ← → / Jump: ↑</div>
-  </header>
-
-  <main class="stage">
-    <canvas id="gameCanvas"></canvas>
-  </main>
-
-  <div id="winOverlay" aria-live="polite">
-    <div class="win-box">
-      <h1>YOU WIN</h1>
-      <p>Nice run. All coins collected.</p>
+    
+    <div class="instructions">
+        <p>Utilisez les flèches ⬆️⬇️⬅️➡️ pour déplacer le serpent</p>
     </div>
-  </div>
-
-  <script src="game.js"></script>
+        <script src="façon.js"></script>
 </body>
 </html>
